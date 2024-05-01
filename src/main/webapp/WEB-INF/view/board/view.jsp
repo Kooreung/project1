@@ -35,6 +35,10 @@
         <input type="hidden" name="id" value="${board.id}">
         <button>삭제</button>
     </form>
+    <form action="/update" method="post">
+        <input type="hidden" name="id" value="${board.id}">
+        <button>수정</button>
+    </form>
 </div>
 
 </body>

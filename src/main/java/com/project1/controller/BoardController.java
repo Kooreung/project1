@@ -44,7 +44,7 @@ public class BoardController {
     public String home(Model model) {
         // 게시물 목록 조회 (select)
         // Model 에 넣고
-        model.addAttribute("boardList, service.list();");
+        model.addAttribute("boardList", service.list());
         // jsp 로 포워드
         return "board/home";
     }

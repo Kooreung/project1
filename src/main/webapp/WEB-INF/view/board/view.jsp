@@ -16,15 +16,15 @@
 <h3>${board.id} 번 게시물</h3>
 <div>
     제목
-    <input type="text" value="${board.title}" readonly>
+    <input type="text" value="${board.title}">
 </div>
 <div>
     본문
-    <textarea cols="30" rows="10" readonly>${board.content}</textarea>
+    <textarea cols="30" rows="10">${board.content}</textarea>
 </div>
 <div>
     작성자
-    <input type="text" value="${board.writer}" readonly>
+    <input type="text" value="${board.writer}">
 </div>
 <div>
     작성일시

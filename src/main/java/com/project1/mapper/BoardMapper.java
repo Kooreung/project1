@@ -30,10 +30,10 @@ public interface BoardMapper {
     List<Board> selectAll();
 
     @Update("""
-                        UPDATE board
-            SET title=#{title}, content=#{content}, writer=#{writer}
-
-
-                        """)
+            UPDATE board
+            SET title=#{title},
+                content=#{content},
+                writer=#{writer}
+            """)
     void update(Board board);
 }

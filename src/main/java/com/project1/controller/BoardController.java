@@ -52,6 +52,7 @@ public class BoardController {
     @PostMapping("/update")
     public String update(Integer id, Board board, RedirectAttributes rttr) {
 
-        return "redirect:/board/" + board.getId();
+        rttr.addAttribute("id", board.getId());
+        return "redirect:/board";
     }
 }

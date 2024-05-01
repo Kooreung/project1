@@ -48,4 +48,10 @@ public class BoardController {
         // jsp 로 포워드
         return "board/home";
     }
+
+    @PostMapping("/update")
+    public String update(Integer id, Board board, RedirectAttributes rttr) {
+
+        return "redirect:/board/" + board.getId();
+    }
 }

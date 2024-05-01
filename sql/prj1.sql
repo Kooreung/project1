@@ -9,4 +9,7 @@ CREATE TABLE board
     content  VARCHAR(3000) NOT NULL,
     writer   VARCHAR(100)  NOT NULL,
     inserted DATETIME      NOT NULL DEFAULT NOW()
-)
+);
+
+SELECT *
+FROM board;

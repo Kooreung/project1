@@ -26,4 +26,8 @@ public class BoardService {
     public List<Board> list() {
         return mapper.selectAll();
     }
+
+    public void update(Board board) {
+        mapper.update(board);
+    }
 }

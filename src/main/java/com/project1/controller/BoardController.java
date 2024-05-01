@@ -50,10 +50,9 @@ public class BoardController {
     }
 
     @PostMapping("/delete")
-    public String delete(Board board, RedirectAttributes rttr) {
-        service.remove(board);
+    public String delete(Integer id) {
+        service.remove(id);
 
-        rttr.addAttribute("id", board.getId());
         return "redirect:/";
     }
 }

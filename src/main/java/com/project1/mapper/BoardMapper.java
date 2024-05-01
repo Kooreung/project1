@@ -33,5 +33,5 @@ public interface BoardMapper {
             DELETE FROM board
             WHERE id = #{id}
             """)
-    int remove(Board board);
+    int remove(Integer id);
 }

@@ -10,13 +10,20 @@
 <html>
 <head>
     <title>Title</title>
+    <style>
+        td, th, tr {
+            border: 1px solid black;
+        }
+    </style>
 </head>
 <body>
+<h3>게시물 목록</h3>
 <table>
     <thead>
-    <th>#</th>
-    <th>제목</th>
-    <tr>작성자
+    <tr>
+        <th>#</th>
+        <th>제목</th>
+        <th>작성자</th>
     </tr>
     </thead>
     <tbody>
@@ -24,13 +31,11 @@
         <tr>
             <td>${board.id}</td>
             <td>${board.title}</td>
-            <td>${board.write}</td>
+            <td>${board.writer}</td>
         </tr>
     </c:forEach>
     </tbody>
-
 </table>
-<h3>게시물 목록</h3>
 
 </body>
 </html>

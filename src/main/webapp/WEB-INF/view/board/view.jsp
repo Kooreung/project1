@@ -31,10 +31,7 @@
     <input type="datetime-local" value="${board.inserted}" readonly>
 </div>
 <div>
-    <form action="/update" method="post">
-        <input type="hidden" name="id" value="${board.id}">
-        <button>수정</button>
-    </form>
+    <a href="/modify?id=${board.id}">수정</a>
 </div>
 
 </body>

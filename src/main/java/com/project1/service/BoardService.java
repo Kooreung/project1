@@ -30,4 +30,8 @@ public class BoardService {
     public void update(Board board) {
         mapper.update(board);
     }
+
+    public void modify(Board board) {
+        mapper.update(board);
+    }
 }

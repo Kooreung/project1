@@ -49,10 +49,19 @@ public class BoardController {
         return "board/home";
     }
 
-    @PostMapping("/update")
-    public String update(Integer id, Board board, RedirectAttributes rttr) {
+    @GetMapping("/modify")
+    public String modify(Integer id, Model model) {
+        // 게시물 목록 조회 (select)
+        // Model 에 넣고
+        model.addAttribute("board", service.get(id));
+        // jsp 로 포워드
+        return "board/modify";
+    }
 
-        rttr.addAttribute("id", board.getId());
+    @PostMapping("/modify")
+    public String modifyPost(Board board) {
+        service.modify(board);
+
         return "redirect:/board";
     }
 }

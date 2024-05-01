@@ -21,6 +21,7 @@
     </style>
 </head>
 <body>
+<c:import url="/WEB-INF/fragment/navbar.jsp"></c:import>
 <h3>게시물 목록</h3>
 <table>
     <thead>

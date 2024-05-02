@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional(rollbackFor = Exception.class)
 @RequiredArgsConstructor
@@ -17,5 +19,9 @@ public class MemberService {
         // Controller 에서 받은 member 내용을 service로 받음
         // service 에서 받은 내용을 mapper 로 전달
         // insert 로 쓰기 위해
+    }
+
+    public List<Member> list() {
+        return mapper.selectAll();
     }
 }

@@ -17,18 +17,23 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
+                    <a href="/member/signup" class="nav-link">
+                        회원가입
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/member/list" class="nav-link">
+                        회원목록
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="/" class="nav-link">
-                        목록
+                        게시글목록
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="/add" class="nav-link">
                         글쓰기
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/member/signup" class="nav-link">
-                        회원가입
                     </a>
                 </li>
             </ul>

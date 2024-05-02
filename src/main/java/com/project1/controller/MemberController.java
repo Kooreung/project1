@@ -4,6 +4,7 @@ import com.project1.domain.Member;
 import com.project1.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,5 +30,11 @@ public class MemberController {
         // 이 내용을 service 에 전달
 
         return "redirect:/";
+    }
+
+    @GetMapping("list")
+    public String list(Model model) {
+        model.addAttribute("memberList", service.list());
+        return "member/list";
     }
 }

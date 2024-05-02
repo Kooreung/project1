@@ -25,4 +25,11 @@ public interface MemberMapper {
             """)
         // Column 종류가 List 로 들어간다
     List<Member> selectAll();
+
+    @Select("""
+            SELECT *
+            FROM member
+            WHERE id = #{id}
+            """)
+    Member selectById(Integer id);
 }

@@ -26,6 +26,11 @@
                         글쓰기
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="/member/signup" class="nav-link">
+                        회원가입
+                    </a>
+                </li>
             </ul>
             <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

@@ -26,7 +26,12 @@
             <form action="/member/signup" method="post" onsubmit="return checkValues()">
                 <div class="mb-3">
                     <label for="inputEmail" class="form-label">이메일</label>
-                    <input name="email" id="inputEmail" type="email" class="form-control" required>
+                    <div class="input-group">
+                        <input name="email" id="inputEmail" required type="email" class="form-control">
+                        <button onclick="emailCheck();" type="button" id="buttonEmailCheck"
+                                class="btn btn-outline-secondary">중복 확인
+                        </button>
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="inputPassword" class="form-label">패스워드</label>
@@ -52,6 +57,19 @@
 </div>
 
 <script>
+    async function emailCheck() {
+        const emailValue = document.querySelector("#inputEmail").value;
+        const url = "/member/email?email=" + emailValue;
+
+        // ajax 요청
+        const response = await fetch(encodeURI(url));
+        // 응답처리 (비동기 처리로 인해 fetch 와 console 이 별개로 진행)
+        // 따라서 기다리기 위해 fetch 에 await 을 구성해준다.
+        // 동기적 처리로 만들어준다. await 을 쓰기 위해 function 에 async 필수
+        // console.log(response);
+        alert(await response.text());
+    }
+
     function checkValues() {
         const password = document.getElementById("inputPassword").value;
         const passwordCheck = document.getElementById("inputPasswordCheck").value;

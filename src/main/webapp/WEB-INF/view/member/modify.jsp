@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: admin
   Date: 2024-05-02
-  Time: 오전 11:07
+  Time: 오후 2:06
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -17,49 +17,40 @@
 </head>
 <body>
 <c:import url="/WEB-INF/fragment/navbar.jsp"/>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-6">
-            <h3 class="mb-4">회원 정보</h3>
-            <div>
+            <h3 class="mb-4">회원 정보 수정</h3>
+            <form action="/member/modify" method="post" onsubmit="return confirm('저장하시겠습니까?')">
+                <input type="hidden" name="id" value="${member.id}">
                 <div class="mb-3">
                     <label for="inputEmail" class="form-label">
                         이메일
                     </label>
-                    <input value="${member.email}" id="inputEmail" type="text" readonly="" class="form-control">
+                    <input id="inputEmail" type="email" name="email" value="${member.email}"
+                           class="form-control-plaintext">
                 </div>
                 <div class="mb-3">
-                    <label for="inputPassword" class="form-label">
+                    <label for="inputPassword" class="form-labal">
                         패스워드
                     </label>
-                    <input value="${member.password}" id="inputPassword" type="text" readonly="" class="form-control">
+                    <input id="inputPassword" type="text" class="form-control" name="password"
+                           value="${member.password}">
                 </div>
                 <div class="mb-3">
-                    <label for="intputNickName" class="form-label">
+                    <label for="inputNickName" class="form-labal">
                         닉네임
                     </label>
-                    <input value="${member.nickName}" id="intputNickName" type="text" readonly="" class="form-control">
+                    <input id="inputNickName" type="text" class="form-control" name="nickName"
+                           value="${member.nickName}">
                 </div>
                 <div class="mb-3">
-                    <label for="inputInserted" class="form-label">
-                        생성일시
-                    </label>
-                    <input value="${member.inserted}" id="inputInserted" type="text" readonly="" class="form-control">
+                    <button class="btn btn-secondary">저장</button>
                 </div>
-                <div>
-                    <button class="btn btn-danger" form="formDelete">탈퇴</button>
-                    <a class="btn btn-secondary" href="/member/modify?id=${member.id}">수정</a>
-                    <%-- GetMapping 에 id 를 전달 --%>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
-</div>
-
-<div class="d-none" onsubmit="return confirm('탈퇴하시겠습니까?')">
-    <form action="/member/remove" id="formDelete" method="post">
-        <input type="hidden" name="id" value="${member.id}">
-    </form>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"

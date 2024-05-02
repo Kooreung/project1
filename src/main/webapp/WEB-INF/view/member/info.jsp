@@ -48,6 +48,7 @@
                 </div>
                 <div>
                     <button class="btn btn-danger" form="formDelete">탈퇴</button>
+                    <a class="btn btn-secondary" href="/member/change?id=${member.id}">수정</a>
                 </div>
             </div>
         </div>

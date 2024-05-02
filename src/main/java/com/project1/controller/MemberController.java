@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequiredArgsConstructor
@@ -49,5 +50,20 @@ public class MemberController {
         service.delete(id);
 
         return "redirect:/";
+    }
+
+    @GetMapping("change")
+    public String change(Integer id, Model model) {
+        model.addAttribute("member", service.get(id));
+
+        return "member/change";
+    }
+
+    @PostMapping("change")
+    public String changePost(Member member, RedirectAttributes rttr) {
+        service.update(member);
+
+        rttr.addAttribute("id", member.getId());
+        return "redirect:/member/list";
     }
 }

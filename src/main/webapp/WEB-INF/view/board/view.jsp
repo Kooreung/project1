@@ -49,13 +49,16 @@
             <div class="mb-3">
                 <button form="formDelete" class="btn btn-danger">삭제</button>
                 <button class="btn btn-secondary">수정</button>
-                <form form="formDelete" action="/delete" method="post">
-                    <input type="hidden" name="id" value="${board.id}">
-                </form>
             </div>
         </div>
     </div>
 </div>
+<div style="display: none">
+    <form id="formDelete" action="/delete" method="post" onsubmit="return confirm('삭제하시겠습니까?')">
+        <input type="hidden" name="id" value="${board.id}">
+    </form>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"
         integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>

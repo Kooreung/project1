@@ -48,7 +48,7 @@
             </div>
             <div class="mb-3">
                 <button form="formDelete" class="btn btn-danger">삭제</button>
-                <button class="btn btn-secondary">수정</button>
+                <a href="/modify?id=${board.id}" class="btn btn-secondary">수정</a>
             </div>
         </div>
     </div>

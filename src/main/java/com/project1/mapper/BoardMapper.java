@@ -34,4 +34,13 @@ public interface BoardMapper {
             WHERE id = #{id}
             """)
     int deleteById(Integer id);
+
+    @Update("""
+            UPDATE board
+            SET title=#{title}, 
+                content=#{content},
+                writer=#{writer}
+            WHEHERE id=#{id}
+            """)
+    int update(Board board);
 }

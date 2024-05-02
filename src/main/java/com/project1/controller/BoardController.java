@@ -56,4 +56,16 @@ public class BoardController {
         return "redirect:/";
     }
 
+    @GetMapping("/modify")
+    public String modify(Integer id, Model model) {
+        model.addAttribute("board", service.get(id));
+        return "board/modify";
+    }
+
+    @PostMapping("/modify")
+    public String modifyPost(Board board, RedirectAttributes rttr) {
+        service.modify(board);
+        rttr.addAttribute("id", board.getId());
+        return "redirect:/board";
+    }
 }

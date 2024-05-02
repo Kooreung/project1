@@ -28,4 +28,8 @@ public class MemberService {
     public Member get(Integer id) {
         return mapper.selectById(id);
     }
+
+    public void delete(Integer id) {
+        mapper.deleteById(id);
+    }
 }

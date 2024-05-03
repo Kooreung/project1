@@ -27,6 +27,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="/member/login" class="nav-link">
+                        로그인
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="/" class="nav-link">
                         게시글목록
                     </a>

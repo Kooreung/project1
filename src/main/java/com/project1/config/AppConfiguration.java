@@ -14,7 +14,7 @@ public class AppConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable());
-        http.formLogin(formLogin -> formLogin.loginPage("/login"));
+        http.formLogin(formLogin -> formLogin.loginPage("/member/login"));
         return http.build();
     }
 

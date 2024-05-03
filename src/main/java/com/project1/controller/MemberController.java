@@ -76,4 +76,15 @@ public class MemberController {
         String message = service.emailCheck(email);
         return message;
     }
+
+    @GetMapping("login")
+    public String loginFrom() {
+        return "member/login";
+    }
+
+    @PostMapping("login")
+    public String login(String email, String password) {
+
+        return "redirect:/";
+    }
 }

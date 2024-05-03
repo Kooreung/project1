@@ -2,6 +2,7 @@ package com.project1.service;
 
 import com.project1.domain.CustomUser;
 import com.project1.domain.Member;
+import com.project1.mapper.BoardMapper;
 import com.project1.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -17,6 +18,7 @@ import java.util.List;
 public class MemberService {
     private final MemberMapper mapper;
     private final BCryptPasswordEncoder encoder;
+    private final BoardMapper boardMapper;
 
     public void signup(Member member) {
         // String password = member.getPassword();
@@ -39,6 +41,10 @@ public class MemberService {
     }
 
     public void delete(Integer id) {
+        // board Table 에서 Record 삭제
+        boardMapper.deleteBoardByMemeberId(id);
+
+        // member Table 에서 Record 삭제
         mapper.deleteById(id);
     }
 

@@ -28,3 +28,8 @@ ALTER TABLE member
 
 SELECT *
 FROM member;
+
+INSERT INTO board
+    (title, content, writer)
+SELECT title, content, writer
+FROM board;

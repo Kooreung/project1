@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -41,10 +42,13 @@ public class BoardController {
     }
 
     @GetMapping("/")
-    public String home(Model model) {
+    public String home(@RequestParam(value = "page", defaultValue = "1") Integer page,
+                       Model model) {
         // 게시물 목록 조회 (select)
         // Model 에 넣고
-        model.addAttribute("boardList", service.list());
+        model.addAllAttributes(service.list(page));
+        // model 은 Map Attribute 과 key , value 구성이 같다. <String , O>
+        // 그래서 model.addAllAttribute 의 초반부에 적용할 수 있다.
         // jsp 로 포워드
         return "board/home";
     }

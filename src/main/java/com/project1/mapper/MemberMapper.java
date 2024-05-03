@@ -12,7 +12,6 @@ public interface MemberMapper {
             INSERT INTO member (email, password, nick_name) 
             VALUES (#{email}, #{password}, #{nickName})
             """)
-//    @Options(useGeneratedKeys = true, keyProperty = "id")
     int insert(Member member);
 
 

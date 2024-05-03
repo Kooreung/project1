@@ -9,8 +9,8 @@ import java.util.List;
 public interface BoardMapper {
 
     @Insert("""
-            INSERT INTO board (title, content, writer)
-            VALUES (#{title}, #{content}, #{writer})
+            INSERT INTO board (title, content)
+            VALUES (#{title}, #{content})
             """)
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int insert(Board board);
@@ -38,15 +38,16 @@ public interface BoardMapper {
     @Update("""
             UPDATE board
             SET title=#{title}, 
-                content=#{content},
-                writer=#{writer}
-            WHEHERE id=#{id}
+                content=#{content}
+            WHERE id=#{id}
             """)
     int update(Board board);
 
     @Select("""
-            SELECT *
-            FROM board
+            SELECT board.id, 
+                   board.title, 
+                   member.nick_name writer
+            FROM board JOIN member ON board.member_id = member.id
             ORDER BY id DESC
             LIMIT #{offset}, 10
             """)

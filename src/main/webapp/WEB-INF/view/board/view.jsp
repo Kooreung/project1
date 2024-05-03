@@ -35,12 +35,6 @@
                           readonly>${board.content}</textarea>
             </div>
             <div class="mb-3">
-                <label for="inputWriter" class="form-label">
-                    작성자
-                </label>
-                <input id="inputWriter" class="form-control" type="text" value="${board.writer}" readonly>
-            </div>
-            <div class="mb-3">
                 <label for="inputInserted" class="form-label">
                     작성일시
                 </label>

@@ -32,15 +32,11 @@
                            required>
                 </div>
                 <div class="mb-3">
-                    <label for="textareaContent" class="form-label"></label>
-                    <textarea id="textareaContent" name="content" class="form-control" cols="30" rows="10" required>
-                        ${board.content}
-                    </textarea>
-                </div>
-                <div class="mb-3">
-                    <label for="inputWriter" class="form-label"></label>
-                    <input id="inputWriter" name="writer" value="${board.writer}" type="text" class="form-control"
-                           required>
+                    <label for="inputContent" class="form-label">
+                        본문
+                    </label>
+                    <textarea id="inputContent" name="content" class="form-control" cols="30" rows="10"
+                              required>${board.content}</textarea>
                 </div>
                 <div class="mb-3">
                     <button class="btn btn-secondary">수정</button>

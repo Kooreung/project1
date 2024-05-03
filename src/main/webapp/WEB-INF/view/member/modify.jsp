@@ -36,7 +36,10 @@
                         패스워드
                     </label>
                     <input oninput="passwordCheck()" id="inputPassword" type="text" class="form-control" name="password"
-                           value="${member.password}">
+                           value="">
+                    <div class="form-text">
+                        암호를 입력하지 않으면 기존 암호로 유지됩니다.
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="inputPasswordCheck" class="form-labal">

@@ -28,13 +28,13 @@
                         <label for="inputEmail" class="form-label">
                             이메일
                         </label>
-                        <input id="inputEmail" type="text" class="form-control">
+                        <input id="inputEmail" type="text" class="form-control" name="username">
                     </div>
                     <div class="mb-3">
                         <label for="inputPassword" class="form-label">
                             패스워드
                         </label>
-                        <input id="inputPassword" type="password" class="form-control">
+                        <input id="inputPassword" type="password" class="form-control" name="password">
                     </div>
                     <div class="mb-3">
                         <button class="btn btn-primary">로그인</button>

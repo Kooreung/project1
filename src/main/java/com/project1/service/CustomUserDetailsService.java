@@ -11,10 +11,10 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
-    private final MemberMapper memberMapper;
+    private final MemberMapper mapper;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return new CustomUser(memberMapper.selectByEmail(username));
+        return new CustomUser(mapper.selectByEmail(username));
     }
 }

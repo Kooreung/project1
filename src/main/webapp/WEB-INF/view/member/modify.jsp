@@ -46,8 +46,10 @@
                         패스워드 확인
                     </label>
                     <input oninput="passwordCheck()" id="inputPasswordCheck" type="text" class="form-control"
-                           value="${member.password}">
-                    <div class="form-text" id="passwordMessage"></div>
+                           value="">
+                    <div class="form-text" id="passwordMessage">
+
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="inputNickName" class="form-labal">

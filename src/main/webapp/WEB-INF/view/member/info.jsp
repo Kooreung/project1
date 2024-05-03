@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <title>Title</title>
@@ -46,21 +47,32 @@
                     </label>
                     <input value="${member.inserted}" id="inputInserted" type="text" readonly="" class="form-control">
                 </div>
-                <div>
-                    <button class="btn btn-danger" form="formDelete">탈퇴</button>
-                    <a class="btn btn-secondary" href="/member/modify?id=${member.id}">수정</a>
-                    <%-- GetMapping 에 id 를 전달 --%>
-                </div>
+
+                <sec:authorize access="isAuthenticated()">
+                    <sec:authentication property="principal.member" var="authMember"/>
+                    <c:if test="${authMember.id eq member.id}">
+                        <div>
+                            <button class="btn btn-danger" form="formDelete">탈퇴</button>
+                            <a class="btn btn-secondary" href="/member/modify?id=${member.id}">수정</a>
+                                <%-- GetMapping 에 id 를 전달 --%>
+                        </div>
+                    </c:if>
+                </sec:authorize>
             </div>
         </div>
     </div>
 </div>
 
-<div class="d-none" onsubmit="return confirm('탈퇴하시겠습니까?')">
-    <form action="/member/remove" id="formDelete" method="post">
-        <input type="hidden" name="id" value="${member.id}">
-    </form>
-</div>
+<sec:authorize access="isAuthenticated()">
+    <sec:authentication property="principal.member" var="authMember"/>
+    <c:if test="${authMember.id eq member.id}">
+        <div class="d-none" onsubmit="return confirm('탈퇴하시겠습니까?')">
+            <form action="/member/remove" id="formDelete" method="post">
+                <input type="hidden" name="id" value="${member.id}">
+            </form>
+        </div>
+    </c:if>
+</sec:authorize>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"
         integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ=="

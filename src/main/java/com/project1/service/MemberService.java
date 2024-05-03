@@ -1,8 +1,10 @@
 package com.project1.service;
 
+import com.project1.domain.CustomUser;
 import com.project1.domain.Member;
 import com.project1.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -53,5 +55,18 @@ public class MemberService {
             // 이미 존재하는 이메일
             return "이미 존재하는 이메일입니다.";
         }
+    }
+
+    public boolean hasAccess(Integer id, Authentication authentication) {
+        if (authentication == null) {
+            return false;
+        }
+
+        Object principal = authentication.getPrincipal();
+        if (principal instanceof CustomUser user) {
+            Member member = user.getMember();
+            return member.getId().equals(id);
+        }
+        return false;
     }
 }

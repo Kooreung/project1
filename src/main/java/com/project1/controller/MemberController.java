@@ -3,6 +3,7 @@ package com.project1.controller;
 import com.project1.domain.Member;
 import com.project1.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,10 +48,12 @@ public class MemberController {
     }
 
     @PostMapping("remove")
-    public String remove(Integer id) {
-        service.delete(id);
+    public String remove(Integer id, Authentication authentication) {
+        if (service.hasAccess(id, authentication)) {
+            service.delete(id);
+        }
 
-        return "redirect:/";
+        return "redirect:/member/signup";
     }
 
     @GetMapping("modify")

@@ -3,14 +3,13 @@ package com.project1.controller;
 import com.project1.domain.Board;
 import com.project1.service.BoardService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import java.security.Principal;
 
 @Controller
 @RequiredArgsConstructor
@@ -24,8 +23,8 @@ public class BoardController {
     }
 
     @PostMapping("/add")
-    public String addPost(Board board, Principal principal, RedirectAttributes rttr) {
-        service.add(board);
+    public String addPost(Board board, Authentication authentication, RedirectAttributes rttr) {
+        service.add(board, authentication);
 
         rttr.addAttribute("id", board.getId());
         return "redirect:/board";
@@ -55,8 +54,10 @@ public class BoardController {
     }
 
     @PostMapping("/delete")
-    public String delete(Integer id) {
-        service.delete(id);
+    public String delete(Integer id, Authentication authentication) {
+        if (service.hasAccess(id, authentication)) {
+            service.delete(id);
+        }
 
         return "redirect:/";
     }
@@ -68,8 +69,11 @@ public class BoardController {
     }
 
     @PostMapping("/modify")
-    public String modifyPost(Board board, RedirectAttributes rttr) {
-        service.modify(board);
+    public String modifyPost(Board board, Authentication authentication, RedirectAttributes rttr) {
+        if (service.hasAccess(board.getId(), authentication)) {
+            service.modify(board);
+        }
+
         rttr.addAttribute("id", board.getId());
         return "redirect:/board";
     }

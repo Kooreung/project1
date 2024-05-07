@@ -42,10 +42,14 @@ public class MemberController {
     }
 
     @GetMapping("") // 회원 정보 확인
-    public String info(Integer id, Model model) {
-        model.addAttribute("member", service.get(id));
-        return "member/info";
+    public String info(Integer id, Authentication authentication, Model model) {
+        if (service.hasAccess(id, authentication)) {
+            model.addAttribute("member", service.get(id));
+            return "member/info";
+        }
+        return "redirect:/";
     }
+
 
     @PostMapping("remove")
     public String remove(Integer id, Authentication authentication) {
